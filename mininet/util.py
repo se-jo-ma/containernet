@@ -512,7 +512,6 @@ def sysctlTestAndSet( name, limit ):
     # read limit
     with open( name, 'r' ) as readFile:
         oldLimit = readFile.readline()
-        ic(name, oldLimit, limit)
         if isinstance( limit, int ):
             # compare integer limits before overriding
             if int( oldLimit ) < limit:
@@ -526,7 +525,6 @@ def sysctlTestAndSet( name, limit ):
 def rlimitTestAndSet( name, limit ):
     "Helper function to set rlimits"
     soft, hard = getrlimit( name )
-    ic(soft, limit, hard)
     if 0 < soft < limit:
         hardLimit = max(limit, hard)
         setrlimit( name, ( limit, hardLimit ) )
