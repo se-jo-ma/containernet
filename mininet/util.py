@@ -81,7 +81,7 @@ def try_catch(func):
         except Exception as e:
             em = kwargs.get('catch_message', None)
             if em: warn(em)
-            warn(f"An error occurred: {e}")
+            warn(f"An error occurred: {e}\n")
     return wrapper
 # Command execution support
 
